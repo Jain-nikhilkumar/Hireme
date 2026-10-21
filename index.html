@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nikhil Jain — Software Engineer</title>
+<meta name="description" content="Nikhil Jain — software engineer building practical, AI-powered products. Demo, résumé, and project documentation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --bg:#F3F5FB;
+    --bg-2:#FFFFFF;
+    --text:#0B1222;
+    --muted:#55618A;
+    --faint:#818BAA;
+    --panel:#FFFFFF;
+    --panel-2:#F7F9FE;
+    --panel-hover:#EEF2FC;
+    --border:rgba(11,18,34,0.10);
+    --accent:#5A68EA;
+    --accent-2:#2BB6C9;
+    --accent-weak:rgba(90,104,234,0.10);
+    --accent-border:rgba(90,104,234,0.30);
+    --glow:rgba(90,104,234,0.10);
+    --font-display:"Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-body:"Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    box-sizing:border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --bg:#080D1A;
+      --bg-2:#0C1324;
+      --text:#EAF0FF;
+      --muted:#9AA7CC;
+      --faint:#6B779B;
+      --panel:#111A2E;
+      --panel-2:#0F1728;
+      --panel-hover:#17223B;
+      --border:rgba(255,255,255,0.09);
+      --accent:#8E9CFF;
+      --accent-2:#5CE1E6;
+      --accent-weak:rgba(142,156,255,0.13);
+      --accent-border:rgba(142,156,255,0.32);
+      --glow:rgba(142,156,255,0.12);
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --bg:#080D1A;--bg-2:#0C1324;--text:#EAF0FF;--muted:#9AA7CC;--faint:#6B779B;
+    --panel:#111A2E;--panel-2:#0F1728;--panel-hover:#17223B;--border:rgba(255,255,255,0.09);
+    --accent:#8E9CFF;--accent-2:#5CE1E6;--accent-weak:rgba(142,156,255,0.13);
+    --accent-border:rgba(142,156,255,0.32);--glow:rgba(142,156,255,0.12);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;min-height:100dvh}
+  body::before{content:"";position:fixed;inset:0 0 auto 0;height:70vh;
+    background:radial-gradient(80% 90% at 12% -5%, var(--glow), transparent 68%);pointer-events:none;z-index:-1}
+  a{color:inherit}
+  svg.ico{width:1.1rem;height:1.1rem;stroke:currentColor;stroke-width:1.65;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+
+  .wrap{max-width:760px;margin:0 auto;padding:clamp(1.25rem,4vw,2.75rem) clamp(1.25rem,4.5vw,2rem) 3.5rem}
+
+  /* top bar */
+  .top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:clamp(2rem,6vw,3rem)}
+  .status{display:inline-flex;align-items:center;gap:.55rem;font-size:.82rem;font-weight:600;color:var(--muted);
+    background:var(--panel);border:1px solid var(--border);padding:.42rem .8rem;border-radius:999px}
+  .status .d{width:.5rem;height:.5rem;border-radius:50%;background:#28c56f;box-shadow:0 0 0 3px rgba(40,197,111,.18)}
+  .toggle{display:inline-grid;place-items:center;width:2.4rem;height:2.4rem;border-radius:50%;cursor:pointer;
+    background:var(--panel);border:1px solid var(--border);color:var(--muted);transition:color .18s,border-color .18s}
+  .toggle:hover{color:var(--text);border-color:var(--accent-border)}
+  .toggle .sun{display:none}
+  :root[data-theme="dark"] .toggle .moon{display:none}:root[data-theme="dark"] .toggle .sun{display:block}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .toggle .moon{display:none}
+    :root:not([data-theme="light"]) .toggle .sun{display:block}
+  }
+
+  /* hero */
+  .mono{display:grid;place-items:center;width:3.4rem;height:3.4rem;border-radius:16px;margin-bottom:1.25rem;
+    font-family:var(--font-display);font-weight:700;font-size:1.25rem;color:#fff;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 10px 30px -12px var(--accent)}
+  .name{font-family:var(--font-display);font-weight:700;letter-spacing:-.025em;line-height:1.0;
+    font-size:clamp(3rem,11vw,4.9rem);margin:0}
+  .lede{font-family:var(--font-display);font-weight:500;color:var(--text);
+    font-size:clamp(1.2rem,4.3vw,1.6rem);line-height:1.28;margin:1rem 0 0;max-width:24ch}
+  .intro{color:var(--muted);margin:1.15rem 0 0;max-width:56ch;font-size:1.06rem}
+
+  .signal{display:block;width:100%;height:clamp(46px,12vw,66px);color:var(--accent);margin:1.6rem 0 1.9rem;overflow:visible}
+  .signal .line{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.7s cubic-bezier(.33,.1,.2,1) .35s forwards}
+  .signal .area{fill:currentColor;stroke:none;opacity:0;animation:fade .9s ease 1.1s forwards}
+  .signal .tip{fill:currentColor;opacity:0;animation:fade .5s ease 1.8s forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes fade{to{opacity:.1}}
+
+  .cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:.25rem}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-body);font-weight:600;font-size:1rem;
+    text-decoration:none;padding:.9rem 1.35rem;border-radius:13px;transition:transform .18s ease,background .18s ease,border-color .18s ease,box-shadow .18s ease,filter .18s ease}
+  .btn svg{width:1.2rem;height:1.2rem}
+  .btn-primary{background:var(--accent);color:#fff;border:1px solid transparent;box-shadow:0 10px 26px -12px var(--accent)}
+  .btn-primary:hover{filter:brightness(1.07);transform:translateY(-2px);box-shadow:0 16px 34px -12px var(--accent)}
+  .btn-ghost{background:var(--panel);color:var(--text);border:1px solid var(--border)}
+  .btn-ghost:hover{border-color:var(--accent-border);background:var(--panel-hover);transform:translateY(-2px)}
+
+  /* sections */
+  .sec{margin-top:clamp(2.5rem,7vw,3.5rem)}
+  .h2{font-family:var(--font-display);font-weight:600;font-size:1.12rem;letter-spacing:.005em;margin:0 0 1.1rem;color:var(--text)}
+
+  .chips{display:flex;flex-wrap:wrap;gap:.5rem}
+  .chip{font-size:.86rem;font-weight:600;color:var(--muted);background:var(--panel);
+    border:1px solid var(--border);padding:.44rem .75rem;border-radius:9px}
+  .chip.lead{color:var(--text);border-color:var(--accent-border);background:var(--accent-weak)}
+
+  /* work card */
+  .work{position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--border);
+    border-radius:18px;padding:clamp(1.35rem,4.5vw,1.9rem)}
+  .work::after{content:"";position:absolute;top:0;right:0;width:45%;height:100%;
+    background:radial-gradient(120% 90% at 100% 0,var(--accent-weak),transparent 70%);pointer-events:none}
+  .work .wt{font-family:var(--font-display);font-weight:600;font-size:1.22rem;margin:0;position:relative}
+  .work .wd{color:var(--muted);margin:.6rem 0 1.25rem;max-width:58ch;position:relative}
+  .work .wlinks{display:flex;flex-wrap:wrap;gap:.6rem;position:relative}
+  .wlink{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;font-weight:600;font-size:.94rem;
+    color:var(--text);background:var(--panel-2);border:1px solid var(--border);padding:.6rem .9rem;border-radius:11px;
+    transition:border-color .16s,background .16s,transform .16s}
+  .wlink:hover{border-color:var(--accent-border);background:var(--panel-hover);transform:translateY(-1px)}
+  .wlink svg{color:var(--accent)}
+
+  /* contact */
+  .email{display:inline-flex;align-items:center;gap:.65rem;text-decoration:none;cursor:pointer;
+    font-family:var(--font-body);font-weight:600;font-size:1.02rem;color:var(--text);
+    background:var(--panel);border:1px solid var(--border);padding:.8rem 1.05rem;border-radius:13px;
+    transition:border-color .16s,background .16s}
+  .email:hover{border-color:var(--accent-border);background:var(--panel-hover)}
+  .email .m{color:var(--accent)}
+  .email .c{margin-left:.15rem;color:var(--faint);display:inline-flex}
+  .email.copied .c{color:#28c56f}
+
+  .links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.9rem}
+  .links a{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;font-weight:600;font-size:.92rem;color:var(--muted);
+    background:var(--panel);border:1px solid var(--border);padding:.58rem .85rem;border-radius:10px;
+    transition:color .16s,border-color .16s,background .16s}
+  .links a:hover{color:var(--text);border-color:var(--accent-border);background:var(--panel-hover)}
+  .links a .ico{color:var(--accent)}
+
+  footer{margin-top:clamp(2.75rem,8vw,4rem);padding-top:1.3rem;border-top:1px solid var(--border);
+    color:var(--faint);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+
+  /* toast */
+  .toast{position:fixed;left:50%;bottom:calc(1.4rem + env(safe-area-inset-bottom,0px));
+    transform:translateX(-50%) translateY(12px);background:var(--text);color:var(--bg);font-weight:600;font-size:.9rem;
+    padding:.65rem 1.05rem;border-radius:11px;opacity:0;pointer-events:none;transition:opacity .24s,transform .24s;z-index:60;
+    box-shadow:0 14px 34px -14px rgba(0,0,0,.5)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* one load sequence */
+  .rise{opacity:0;transform:translateY(12px);animation:rise .7s cubic-bezier(.2,.6,.2,1) forwards}
+  .rise.d1{animation-delay:.05s}.rise.d2{animation-delay:.14s}.rise.d3{animation-delay:.23s}.rise.d4{animation-delay:.32s}
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+
+  @media (prefers-reduced-motion: reduce){
+    .signal .line{animation:none;stroke-dashoffset:0}
+    .signal .area{animation:none;opacity:.1}.signal .tip{animation:none;opacity:1}
+    .rise{animation:none;opacity:1;transform:none}
+    .btn,.wlink,.links a,.email,.toggle{transition:none}
+    .btn:hover,.wlink:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M9 7.5l8 4.5-8 4.5z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-resume" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3.5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 12h5M9.5 15.5h4"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V16"/><circle cx="8" cy="7.6" r="0.9" fill="currentColor" stroke="none"/><path d="M12 16v-3.4a2 2 0 014 0V16"/><path d="M12 16v-5.5"/></symbol>
+  <symbol id="i-git" viewBox="0 0 24 24"><circle cx="6.5" cy="6.5" r="2.2"/><circle cx="6.5" cy="17.5" r="2.2"/><circle cx="17.5" cy="9" r="2.2"/><path d="M6.5 8.7v6.6M8.7 6.5h5.3a3.5 3.5 0 013.5 3.5v1.3"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M8.8 13.3L7.5 21l4.5-2.3L16.5 21l-1.3-7.7"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="M9 8l-4 4 4 4M15 8l4 4-4 4"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 15A8.5 8.5 0 019.2 3.8 7.5 7.5 0 1020.5 15z"/></symbol>
+</svg>
+
+<div class="wrap">
+
+  <div class="top">
+    <span class="status"><span class="d"></span>Open to software engineering roles</span>
+    <button class="toggle" id="themeBtn" type="button" aria-label="Switch color theme">
+      <svg class="ico moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      <svg class="ico sun" aria-hidden="true"><use href="#i-sun"/></svg>
+    </button>
+  </div>
+
+  <main>
+    <div class="mono rise d1" aria-hidden="true">NJ</div>
+    <h1 class="name rise d1">Nikhil Jain</h1>
+    <p class="lede rise d2">Software engineer building practical, AI-powered products.</p>
+    <p class="intro rise d3">I turn AI into products people actually use. Most recently I built a real-time, AI-driven market intelligence platform — live market data in, clear decisions out. I care about shipping reliable, business-focused engineering, not just demos.</p>
+
+    <svg class="signal" viewBox="0 0 800 70" preserveAspectRatio="none" aria-hidden="true">
+      <path class="area" d="M0,54 L40,49 L80,52 L120,42 L160,46 L200,37 L240,41 L280,31 L320,35 L360,26 L400,30 L440,22 L480,26 L520,17 L560,21 L600,14 L640,18 L680,10 L720,13 L760,7 L800,11 L800,70 L0,70 Z"/>
+      <path class="line" pathLength="1" d="M0,54 L40,49 L80,52 L120,42 L160,46 L200,37 L240,41 L280,31 L320,35 L360,26 L400,30 L440,22 L480,26 L520,17 L560,21 L600,14 L640,18 L680,10 L720,13 L760,7 L800,11"/>
+      <circle class="tip" cx="800" cy="11" r="4"/>
+    </svg>
+
+    <div class="cta rise d4">
+      <a class="btn btn-primary" href="https://drive.google.com/file/d/1MJJZ7a-uGK8xYsqjmLktpjMazvPBSWXE/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <svg aria-hidden="true"><use href="#i-play"/></svg>Watch the demo
+      </a>
+      <a class="btn btn-ghost" href="https://drive.google.com/file/d/14fh-HHyqm5Lwx8GHT8VVD14pj62rMSUu/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <svg aria-hidden="true"><use href="#i-resume"/></svg>View resume
+      </a>
+    </div>
+
+    <section class="sec">
+      <h2 class="h2">What I work with</h2>
+      <div class="chips">
+        <span class="chip lead">Generative AI</span>
+        <span class="chip lead">Machine Learning</span>
+        <span class="chip">PyTorch</span>
+        <span class="chip">TensorFlow</span>
+        <span class="chip">Python</span>
+        <span class="chip">React</span>
+        <span class="chip">Flutter</span>
+        <span class="chip">SQL</span>
+        <span class="chip">Firebase</span>
+        <span class="chip">Power BI</span>
+        <span class="chip">Data Analysis</span>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2 class="h2">Selected work</h2>
+      <article class="work">
+        <h3 class="wt">Real-time AI market intelligence platform</h3>
+        <p class="wd">An AI-driven platform that ingests live market data and turns it into clear, decision-ready intelligence. I built it end to end — from the data pipeline to the interface — with a focus on reliability and real business use.</p>
+        <div class="wlinks">
+          <a class="wlink" href="https://drive.google.com/file/d/1MJJZ7a-uGK8xYsqjmLktpjMazvPBSWXE/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+            <svg class="ico" aria-hidden="true"><use href="#i-play"/></svg>Watch the demo
+          </a>
+          <a class="wlink" href="https://drive.google.com/file/d/1A--ZRqsJcOnr84e-TklJDCqhVQIjOOEG/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+            <svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg>Read the documentation
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <section class="sec">
+      <h2 class="h2">Get in touch</h2>
+      <a class="email" id="emailLink" href="mailto:nikhilkumarjain28@gmail.com" data-email="nikhilkumarjain28@gmail.com">
+        <svg class="ico m" aria-hidden="true"><use href="#i-mail"/></svg>
+        <span class="addr">nikhilkumarjain28@gmail.com</span>
+        <span class="c"><svg class="ico cp" aria-hidden="true"><use href="#i-copy"/></svg><svg class="ico ck" aria-hidden="true" style="display:none"><use href="#i-check"/></svg></span>
+      </a>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/nikhilkumar-jain2411" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-link"/></svg>LinkedIn</a>
+        <a href="https://github.com/Jain-nikhilkumar" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-git"/></svg>GitHub</a>
+        <a href="https://nkradha.vercel.app/" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg>Website</a>
+        <a href="https://www.credly.com/users/nikhil-jain.09508026" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-award"/></svg>Credly</a>
+        <a href="https://g.dev/developer2411" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-code"/></svg>g.dev</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Nikhil Jain</span>
+    <span>Software engineer · AI &amp; product</span>
+  </footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  (function(){
+    var root = document.documentElement;
+    var btn = document.getElementById('themeBtn');
+    try{ var s = localStorage.getItem('theme'); if(s==='light'||s==='dark') root.setAttribute('data-theme', s); }catch(e){}
+    function isDark(){ var t=root.getAttribute('data-theme'); if(t) return t==='dark';
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; }
+    btn.addEventListener('click', function(){
+      var n = isDark() ? 'light' : 'dark'; root.setAttribute('data-theme', n);
+      try{ localStorage.setItem('theme', n); }catch(e){}
+    });
+
+    var toast = document.getElementById('toast'), tTimer;
+    function showToast(msg){ toast.textContent = msg; toast.classList.add('show');
+      clearTimeout(tTimer); tTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2200); }
+
+    function copyText(text){
+      if(navigator.clipboard && window.isSecureContext){ return navigator.clipboard.writeText(text); }
+      return new Promise(function(res,rej){
+        try{ var ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+          document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); res(); }
+        catch(err){ rej(err); }
+      });
+    }
+
+    var email = document.getElementById('emailLink');
+    var cp = email.querySelector('.cp'), ck = email.querySelector('.ck');
+    email.addEventListener('click', function(){
+      // copy the address so it's always usable, even if no mail app opens
+      copyText(email.getAttribute('data-email')).then(function(){
+        email.classList.add('copied'); cp.style.display='none'; ck.style.display='inline-flex';
+        showToast('Email copied to clipboard');
+        setTimeout(function(){ email.classList.remove('copied'); cp.style.display='inline-flex'; ck.style.display='none'; }, 2200);
+      }).catch(function(){ showToast('nikhilkumarjain28@gmail.com'); });
+      // mailto still fires for anyone who has a mail app set
+    });
+  })();
+</script>
+</body>
+</html>
